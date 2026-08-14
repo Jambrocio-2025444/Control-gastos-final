@@ -1,0 +1,125 @@
+<div class="min-h-screen flex bg-brand-950 text-white">
+
+  <!-- Panel izquierdo: recibo (oculto en mobile) -->
+  <div class="hidden md:flex w-1/2 items-center justify-center ledger-bg relative p-12">
+    <div class="max-w-xs w-full">
+      <div class="receipt-wrap">
+        <div class="receipt">
+          <p class="text-center font-display font-bold tracking-tight text-lg">CONTROL DE GASTOS</p>
+          <p class="text-center font-mono text-[10px] tracking-widest uppercase mt-1 opacity-60">Recibo de acceso</p>
+
+          <div class="dashed-divider my-4"></div>
+
+          <div class="receipt-row">
+            <span>Saldo anterior</span>
+            <span>Q 0.00</span>
+          </div>
+          <div class="receipt-row">
+            <span>Gastos del mes</span>
+            <span>Q 0.00</span>
+          </div>
+          <div class="receipt-row font-medium">
+            <span>Disponible</span>
+            <span>Q 0.00</span>
+          </div>
+
+          <div class="dashed-divider my-4"></div>
+
+          <p class="text-center font-mono text-[10px] tracking-widest uppercase opacity-60">Gracias por su visita</p>
+          <div class="barcode mt-3"></div>
+        </div>
+      </div>
+      <p class="font-display text-brand-200/70 text-center mt-8 leading-snug">
+        Cada gasto, registrado<br/>con precisión.
+      </p>
+    </div>
+  </div>
+
+  <!-- Panel derecho: formulario -->
+  <div class="w-full md:w-1/2 flex flex-col justify-center px-8 sm:px-16 lg:px-20 py-12 border-l border-brand-800">
+    <div class="w-full max-w-sm mx-auto reveal">
+
+      <!-- Logo compacto (visible siempre, útil en mobile) -->
+      <div class="flex items-center gap-3 mb-10">
+        <div class="w-9 h-9 bg-brand-500 rounded-lg flex items-center justify-center">
+          <span class="font-display font-bold text-brand-950 text-sm">CG</span>
+        </div>
+        <div>
+          <p class="font-display font-semibold leading-none">Control de Gastos</p>
+          <p class="font-mono text-[10px] tracking-widest uppercase text-brand-200/40 mt-1">Acceso al sistema</p>
+        </div>
+      </div>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-8">
+
+        <!-- Error -->
+        <div *ngIf="errorMessage" class="border border-red-800/50 bg-red-950/30 text-red-300 px-4 py-3 rounded-lg text-sm font-mono">
+          {{ errorMessage }}
+        </div>
+
+        <!-- Usuario (floating label, underline) -->
+        <div class="relative">
+          <input
+            type="text"
+            formControlName="username"
+            placeholder=" "
+            id="username"
+            class="peer w-full bg-transparent border-0 border-b border-brand-800 pb-2 text-white font-mono text-sm focus:outline-none focus:border-brand-500 transition-colors"
+            [class.border-red-500]="username?.invalid && username?.touched"
+          />
+          <label for="username"
+            class="absolute left-0 top-0 text-brand-200/40 font-mono text-[11px] tracking-widest uppercase transition-all duration-150 pointer-events-none
+                   peer-placeholder-shown:text-sm peer-placeholder-shown:text-brand-200/30 peer-placeholder-shown:top-2.5 peer-placeholder-shown:tracking-normal peer-placeholder-shown:normal-case
+                   peer-focus:top-0 peer-focus:text-[11px] peer-focus:tracking-widest peer-focus:uppercase peer-focus:text-brand-500">
+            Usuario
+          </label>
+          <div *ngIf="username?.invalid && username?.touched" class="mt-1.5 text-xs font-mono text-red-400">
+            El usuario es requerido
+          </div>
+        </div>
+
+        <!-- Contraseña (floating label, underline) -->
+        <div class="relative">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            formControlName="password"
+            placeholder=" "
+            id="password"
+            class="peer w-full bg-transparent border-0 border-b border-brand-800 pb-2 pr-8 text-white font-mono text-sm focus:outline-none focus:border-brand-500 transition-colors"
+            [class.border-red-500]="password?.invalid && password?.touched"
+          />
+          <label for="password"
+            class="absolute left-0 top-0 text-brand-200/40 font-mono text-[11px] tracking-widest uppercase transition-all duration-150 pointer-events-none
+                   peer-placeholder-shown:text-sm peer-placeholder-shown:text-brand-200/30 peer-placeholder-shown:top-2.5 peer-placeholder-shown:tracking-normal peer-placeholder-shown:normal-case
+                   peer-focus:top-0 peer-focus:text-[11px] peer-focus:tracking-widest peer-focus:uppercase peer-focus:text-brand-500">
+            Contraseña
+          </label>
+          <button type="button" (click)="togglePasswordVisibility()" class="absolute right-0 bottom-2">
+            <svg *ngIf="!showPassword" class="h-4 w-4 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+            </svg>
+            <svg *ngIf="showPassword" class="h-4 w-4 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"></path>
+            </svg>
+          </button>
+          <div *ngIf="password?.invalid && password?.touched" class="mt-1.5 text-xs font-mono text-red-400">
+            <span *ngIf="password?.errors?.['required']">La contraseña es requerida</span>
+            <span *ngIf="password?.errors?.['minlength']">Mínimo 6 caracteres</span>
+          </div>
+        </div>
+
+        <!-- Botón -->
+        <button
+          type="submit"
+          [disabled]="loginForm.invalid || isLoading"
+          class="w-full bg-brand-500 text-brand-950 py-2.5 rounded-lg font-display font-semibold text-sm hover:bg-brand-200 transition disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+        >
+          <svg *ngIf="isLoading" class="animate-spin h-4 w-4 text-brand-950" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          {{ isLoading ? 'Verificando…' : 'Iniciar sesión' }}
+        </button>
+      </form>
+    </div>
