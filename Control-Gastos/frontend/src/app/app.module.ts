@@ -9,12 +9,14 @@ import { AppComponent } from './app.component';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { LoginComponent } from './features/auth/pages/login/login.component';
 import { DashboardComponent } from './features/auth/pages/dashboard/dashboard.component';
+import { SessionExpiredModalComponent } from './features/auth/pages/session-expired/session-expired.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashboardComponent,
+    SessionExpiredModalComponent,
   ],
   bootstrap: [AppComponent],
   imports: [
