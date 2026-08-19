@@ -1,70 +1,95 @@
-<div class="min-h-screen bg-brand-950 text-white font-sans ledger-bg">
+<div class="min-h-screen bg-[#04201a] text-white font-sans relative overflow-hidden">
 
-  <!-- Header -->
-  <header class="border-b border-brand-800 px-6 md:px-10 py-5 flex items-center justify-between">
-    <div class="flex items-center gap-3">
-      <div class="w-9 h-9 bg-brand-500 rounded-lg flex items-center justify-center">
-        <span class="font-display font-bold text-brand-950 text-sm">CG</span>
+  <div class="absolute w-96 h-96 rounded-full bg-[#10b981]/10 blur-3xl -top-20 -right-20 pointer-events-none z-0" aria-hidden="true"></div>
+  <div class="absolute w-96 h-96 rounded-full bg-[#083b2f]/40 blur-3xl bottom-0 left-0 pointer-events-none z-0" aria-hidden="true"></div>
+
+
+  <header class="border-b border-emerald-900/40 bg-[#04201a]/80 backdrop-blur-md px-6 md:px-10 py-4 flex items-center justify-between relative z-10">
+    <div class="flex items-center gap-4">
+      
+      
+      <div class="relative group">
+        
+        <div class="absolute -inset-1 bg-gradient-to-r from-[#083b2f] to-[#10b981] rounded-full blur-md opacity-40 group-hover:opacity-70 transition duration-300"></div>
+        
+        
+        <div class="relative w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center p-2.5 shrink-0 shadow-xl transition transform hover:scale-105">
+          <img src="assets/images/logo.png" alt="Control de Gastos" class="w-full h-full object-contain filter drop-shadow-md" />
+        </div>
       </div>
-      <span class="font-display font-semibold text-lg tracking-tight">Control de Gastos</span>
+
+      <div class="flex flex-col">
+        <span class="font-display font-bold text-xl tracking-tight text-white leading-tight">Control de Gastos</span>
+        <span class="text-[11px] text-emerald-200/50 tracking-wide font-medium">Panel Principal</span>
+      </div>
     </div>
 
-    <div class="flex items-center gap-5">
-      <span class="font-mono text-[11px] uppercase tracking-widest text-brand-200 border border-brand-800 px-3 py-1 rounded-full">
+    <div class="flex items-center gap-4">
+      <span class="text-xs font-semibold uppercase tracking-wider text-emerald-300/80 bg-emerald-950/80 border border-emerald-800/50 px-3.5 py-1.5 rounded-full">
         {{ roleLabel }}
       </span>
-      <button (click)="logout()" class="font-mono text-xs text-brand-200/60 hover:text-brand-200 transition">
-        Cerrar sesión →
+      <button (click)="logout()" class="text-xs font-medium text-emerald-200/70 hover:text-emerald-100 transition flex items-center gap-1.5 group">
+        Cerrar sesión 
+        <span class="transition-transform group-hover:translate-x-0.5">→</span>
       </button>
     </div>
   </header>
 
-  <main class="max-w-4xl mx-auto px-6 md:px-10 py-14">
+  <main class="max-w-4xl mx-auto px-6 md:px-10 py-12 relative z-10">
 
-    <!-- Bloque de bienvenida estilo encabezado de recibo -->
+    
     <section class="reveal">
-      <p class="font-mono text-xs tracking-widest text-brand-500 uppercase">
-        Sesión registrada · {{ sessionTimestamp | date:'d MMM y · HH:mm' }}
-      </p>
-      <h1 class="font-display text-4xl md:text-5xl font-semibold tracking-tight mt-3">
-        Hola, {{ currentUser?.username }}
-      </h1>
-      <p class="text-brand-200/50 mt-2">Accediste como {{ currentUser?.email }}</p>
-    </section>
-
-    <!-- Renglones tipo recibo -->
-    <section class="mt-10 border border-brand-800 rounded-xl px-6 py-5 reveal reveal-delay-1">
-      <div class="ledger-row">
-        <span class="label">Estado de la cuenta</span>
-        <span class="fill"></span>
-        <span class="value text-brand-200">Sesión activa</span>
-      </div>
-      <div class="ledger-row">
-        <span class="label">Rol asignado</span>
-        <span class="fill"></span>
-        <span class="value text-brand-200">{{ roleLabel }}</span>
-      </div>
-      <div class="ledger-row ledger-row-last">
-        <span class="label">Usuario</span>
-        <span class="fill"></span>
-        <span class="value text-brand-200">{{ currentUser?.username }}</span>
-      </div>
-    </section>
-
-    <!-- Roadmap -->
-    <section class="mt-16 reveal reveal-delay-2">
-      <h2 class="font-display text-xl font-semibold">Próximas funcionalidades</h2>
-      <p class="text-brand-200/50 mt-1 text-sm">El proyecto avanza por fases. Estas son las siguientes en el plan.</p>
-
-      <div class="mt-8 relative pl-8 timeline">
-        <div *ngFor="let item of roadmap; let last = last" class="relative pb-9" [class.pb-0]="last">
-          <span class="timeline-dot"></span>
-          <span class="font-mono text-xs text-brand-500">{{ item.code }}</span>
-          <h3 class="font-display font-medium mt-1">{{ item.title }}</h3>
-          <p class="text-sm text-brand-200/50 mt-1 max-w-md">{{ item.description }}</p>
-          <span class="inline-block font-mono text-[10px] tracking-widest uppercase text-brand-200/70 border border-brand-800 px-2.5 py-1 rounded-full mt-3">
-            Próximamente
+      <div class="rounded-3xl border border-emerald-800/40 bg-[#083b2f]/30 backdrop-blur-md p-6 sm:p-8 shadow-2xl shadow-black/20">
+        <div class="flex items-start justify-between gap-4">
+          <div class="flex items-center gap-4 min-w-0">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#083b2f] to-[#10b981] flex items-center justify-center shrink-0 shadow-md shadow-emerald-950/50 border border-emerald-500/20">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div class="min-w-0">
+              <h1 class="font-display text-2xl font-bold tracking-tight truncate text-white">
+                Hola, {{ currentUser?.username }}
+              </h1>
+              <p class="text-emerald-200/60 text-xs mt-1 truncate">Accediste como {{ currentUser?.email }}</p>
+            </div>
+          </div>
+          <span class="inline-flex items-center gap-2 shrink-0 text-[11px] font-semibold tracking-wider uppercase text-emerald-300 bg-emerald-900/40 border border-emerald-700/50 px-3.5 py-1.5 rounded-full">
+            <span class="w-2 h-2 rounded-full bg-[#10b981] animate-ping"></span>
+            Sesión activa
           </span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+          <div class="rounded-2xl bg-[#04201a]/60 border border-emerald-900/30 px-5 py-4">
+            <p class="text-xs font-semibold tracking-wider uppercase text-emerald-300/50">Rol asignado</p>
+            <p class="font-display font-semibold text-white mt-1 text-base">{{ roleLabel }}</p>
+          </div>
+          <div class="rounded-2xl bg-[#04201a]/60 border border-emerald-900/30 px-5 py-4">
+            <p class="text-xs font-semibold tracking-wider uppercase text-emerald-300/50">Sesión registrada</p>
+            <p class="font-display font-semibold text-white mt-1 text-base">{{ sessionTimestamp | date:'d MMM · HH:mm' }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  
+    <section class="mt-14 reveal reveal-delay-1">
+      <h2 class="font-display text-2xl font-bold text-white tracking-tight">Próximas funcionalidades</h2>
+      <p class="text-emerald-200/60 mt-1 text-sm">El proyecto avanza por fases. Estas son las siguientes en el plan.</p>
+
+      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div *ngFor="let item of roadmap"
+          class="rounded-3xl p-px bg-gradient-to-br from-[#083b2f] via-[#10b981]/40 to-transparent transition-transform duration-300 hover:-translate-y-1 shadow-lg">
+          <div class="h-full rounded-[23px] bg-[#04201a]/90 backdrop-blur-md p-6 flex flex-col border border-emerald-900/30">
+            <span class="text-xs font-bold tracking-wider uppercase text-[#10b981]">{{ item.code }}</span>
+            <h3 class="font-display font-bold text-lg text-white mt-3">{{ item.title }}</h3>
+            <p class="text-sm text-emerald-100/70 mt-2 flex-1 leading-relaxed">{{ item.description }}</p>
+            <span class="inline-flex w-fit items-center gap-2 text-[10px] font-semibold tracking-wider uppercase text-emerald-200/80 bg-emerald-950/60 border border-emerald-800/40 px-3 py-1.5 rounded-full mt-6">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#10b981]"></span>
+              Próximamente
+            </span>
+          </div>
         </div>
       </div>
     </section>
