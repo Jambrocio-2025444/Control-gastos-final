@@ -39,6 +39,24 @@ export const initializeDatabase = async () => {
     `, [adminPassword, userPassword]);
 
     console.log('Base de datos inicializada');
+
+    // --- Módulo de Ingresos ---
+    await client.query(`
+      CREATE TABLE IF NOT EXISTS incomes (
+        id SERIAL PRIMARY KEY,
+        user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+        type VARCHAR(20) NOT NULL CHECK (type IN ('fijo', 'variable', 'otro')),
+        amount NUMERIC(12,2) NOT NULL CHECK (amount > 0),
+        description VARCHAR(255) NOT NULL,
+        income_date DATE NOT NULL,
+        period VARCHAR(20) NOT NULL DEFAULT 'mes',
+        notes TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
+    `);
+
+    console.log('Tabla incomes verificada');
   } catch (error) {
     console.error('Error al inicializar la base de datos:', error);
     throw error;
