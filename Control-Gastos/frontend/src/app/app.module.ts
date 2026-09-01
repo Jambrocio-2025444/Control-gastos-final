@@ -10,6 +10,9 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { LoginComponent } from './features/auth/pages/login/login.component';
 import { DashboardComponent } from './features/auth/pages/dashboard/dashboard.component';
 import { SessionExpiredModalComponent } from './features/auth/pages/session-expired/session-expired.component';
+import { SidebarComponent } from './features/auth/pages/sidebar/sidebar.component';
+import { IncomeComponent } from './features/auth/pages/income/income.component';
+
 
 @NgModule({
   declarations: [
@@ -17,6 +20,8 @@ import { SessionExpiredModalComponent } from './features/auth/pages/session-expi
     LoginComponent,
     DashboardComponent,
     SessionExpiredModalComponent,
+    SidebarComponent,
+    IncomeComponent
   ],
   bootstrap: [AppComponent],
   imports: [
