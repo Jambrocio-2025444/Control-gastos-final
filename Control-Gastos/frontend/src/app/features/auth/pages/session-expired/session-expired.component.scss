@@ -3,7 +3,7 @@
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(9, 20, 19, 0.75);
+  background: rgba(31, 77, 44, 0.75);
   backdrop-filter: blur(3px);
   display: flex;
   align-items: center;
@@ -13,8 +13,8 @@
 }
 
 .modal-card {
-  background: #091413;
-  border: 1px solid #285A48;
+  background: #1F4D2C;
+  border: 1px solid rgba(76, 175, 80, 0.35);
   border-radius: 1.5rem;
   padding: 2.5rem 2rem;
   max-width: 340px;
