@@ -19,8 +19,8 @@ export class SidebarComponent {
 
   navItems: NavItem[] = [
     { label: 'Resumen', icon: 'bar-chart', route: '/dashboard' },
-    { label: 'ingresar tus ingresos', icon: 'wallet', route: '/income' },
-    { label: 'Ingresa tus egresos', icon: 'bar-chart', route: null },
+    { label: 'ingrese sus ingresos', icon: 'wallet', route: '/income' },
+    { label: 'Ingrese sus egresos', icon: 'bar-chart', route: null },
     { label: 'Metas de ahorro', icon: 'piggy-bank', route: null },
   ];
 
