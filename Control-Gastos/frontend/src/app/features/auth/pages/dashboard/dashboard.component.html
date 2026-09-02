@@ -8,8 +8,8 @@
     <!-- Encabezado -->
     <div class="flex items-center justify-between">
       <div>
-        <h1 class="font-display text-2xl font-semibold text-[#1F4D2C]">Tu panorama financiero</h1>
-        <p class="text-sm text-gray-500 mt-1">{{ 'agosto 2026' }} · actualizado hoy</p>
+        <h1 class="font-display text-2xl font-semibold text-[#1F4D2C]">Su panorama financiero</h1>
+        <p class="text-sm text-gray-500 mt-1">{{ 'Septiembre 2026' }} · actualizado hoy</p>
       </div>
       <!-- Botón con texto e ícono en verde bosque (#1F4D2C) -->
       <button class="bg-white border border-[#3F8A4D]/30 rounded-lg px-4 py-2 text-sm font-semibold text-[#1F4D2C] shadow-sm hover:border-[#4CAF50] hover:bg-[#EAF3E8] transition flex items-center gap-2">
@@ -108,7 +108,7 @@
           </svg>
         </div>
         <p class="text-5xl font-bold text-[#1F4D2C] mt-4">{{ debtHealthPercent }}%</p>
-        <p class="text-sm text-gray-500 mt-3">Tu carga de deuda está dentro de un rango manejable.</p>
+        <p class="text-sm text-gray-500 mt-3">Su carga de deuda está dentro de un rango manejable.</p>
 
         <div class="w-full h-2.5 bg-[#EAF3E8] rounded-full mt-5 overflow-hidden">
           <div class="h-full bg-[#4CAF50] rounded-full" [style.width.%]="debtHealthPercent"></div>
@@ -129,10 +129,10 @@
         </span>
         <div>
           <p class="font-medium text-finance-forest text-sm">
-            {{ salaryCoversDebt ? 'Tu sueldo sí cubre tus deudas' : 'Tu sueldo no cubre tus deudas' }}
+            {{ salaryCoversDebt ? 'Su sueldo sí cubre sus deudas' : 'Su sueldo no cubre tus deudas' }}
           </p>
           <p class="text-xs text-gray-500 mt-0.5">
-            Después de cubrir {{ debtTotal }} de deudas, te quedan {{ remainingAfterDebt }} para gastos y ahorro.
+            Después de cubrir {{ debtTotal }} de deudas, le quedan {{ remainingAfterDebt }} para gastos y ahorro.
           </p>
         </div>
       </div>
@@ -144,7 +144,7 @@
     <!-- Alcancía -->
     <div class="bg-white rounded-2xl p-9 shadow-sm border border-gray-100 mt-5 flex items-center justify-between gap-8">
       <div class="flex-1">
-        <h2 class="font-display text-2xl font-semibold text-finance-forest">Tu alcancía está creciendo</h2>
+        <h2 class="font-display text-2xl font-semibold text-finance-forest">Su alcancía está creciendo</h2>
         <p class="text-lg text-gray-500 mt-2">
           Ya reservaste {{ savingsAmount }} este mes. ¡Mantén el ritmo para alcanzar tu meta!
         </p>
