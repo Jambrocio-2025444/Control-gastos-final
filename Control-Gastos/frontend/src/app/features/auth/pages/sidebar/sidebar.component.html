@@ -1,0 +1,75 @@
+<aside class="w-64 bg-finance-forest text-white flex flex-col fixed inset-y-0 left-0 p-5">
+  
+  <!-- Logo / Encabezado -->
+  <div class="flex items-center gap-2.5 px-1">
+    <div class="w-9 h-9 flex items-center justify-center">
+      <img src="assets/images/logo.png" alt="Control de Gastos" class="w-full h-full object-contain" />
+    </div>
+    <span class="font-display font-semibold">Control de Gastos</span>
+  </div>
+
+  <!-- Menú de Navegación -->
+  <nav class="mt-8 flex flex-col gap-2.5">
+    <a *ngFor="let item of navItems"
+      [routerLink]="item.route"
+      routerLinkActive="ring-2 ring-[#4CAF50]/50"
+      [class.pointer-events-none]="!item.route"
+      [class.opacity-75]="!item.route"
+      class="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-semibold transition bg-[#EAF3E8] text-[#1F4D2C] hover:brightness-95">
+
+      <!-- Contenedor de íconos idénticos a la referencia -->
+      <ng-container [ngSwitch]="item.icon">
+        
+        <!-- Gráfico de barras ascendente (Usado en Resumen e Ingresa tus egresos) -->
+        <svg *ngSwitchCase="'bar-chart'" class="w-5 h-5 shrink-0 text-[#1F4D2C]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 3v18h18"/>
+          <path stroke-linecap="round" stroke-linejoin="round" d="M18 9l-5 5-4-4-3 3"/>
+          <path stroke-linecap="round" stroke-linejoin="round" d="M7 17v-2m4 2v-4m4 4v-7"/>
+        </svg>
+
+        <!-- Billetera (Usado en ingresar tus ingresos) -->
+        <svg *ngSwitchCase="'wallet'" class="w-5 h-5 shrink-0 text-[#1F4D2C]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+        </svg>
+
+        <!-- Alcancía (Usado en Metas de ahorro) -->
+        <svg *ngSwitchCase="'piggy-bank'" class="w-5 h-5 shrink-0 text-[#1F4D2C]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 10h1a1 1 0 011 1v2a1 1 0 01-1 1h-1m-1-4v6a2 2 0 01-2 2h-1v2h-2v-2H9v2H7v-2H6a2 2 0 01-2-2v-2H3v-2h1v-1a5 5 0 015-5h4a5 5 0 013 1l2-1v3l-1 .5"/>
+          <circle cx="16" cy="10" r="0.5" fill="currentColor" stroke="none"/>
+        </svg>
+
+      </ng-container>
+
+      <span class="first-letter:uppercase">{{ item.label }}</span>
+    </a>
+  </nav>
+  <!-- Tarjeta de Usuario Inferior -->
+  <div class="mt-auto bg-[#EAF3E8] rounded-2xl p-4 text-[#1F4D2C]">
+    
+    <!-- Info del Usuario -->
+    <div class="flex items-center gap-3">
+      <!-- Avatar en Verde Brillante (#4CAF50) -->
+      <div class="w-10 h-10 rounded-full bg-[#4CAF50] flex items-center justify-center text-xs font-bold text-white shrink-0 shadow-sm">
+        {{ userInitials }}
+      </div>
+      <div class="min-w-0 flex-1">
+        <!-- Nombre de usuario en Verde Bosque (#1F4D2C) -->
+        <p class="text-sm font-bold truncate text-[#1F4D2C]">{{ currentUser?.username || 'Usuario' }}</p>
+        <p class="text-xs text-gray-500 truncate mt-0.5">{{ currentUser?.email || 'correo@email.com' }}</p>
+      </div>
+    </div>
+
+    <!-- Indicador de Rol en verde muy suave -->
+    <div class="flex items-center justify-between mt-3 text-xs bg-[#3F8A4D]/10 rounded-xl px-3 py-2">
+      <span class="text-gray-500">Rol</span>
+      <span class="font-bold text-[#1F4D2C]">{{ roleLabel }}</span>
+    </div>
+
+    <!-- Botón Cerrar Sesión (Hover en verde claro #4CAF50 con suave opacidad) -->
+    <button (click)="logout()"
+      class="w-full mt-3 border border-[#3F8A4D]/30 text-[#1F4D2C] py-2.5 rounded-xl text-xs font-bold hover:bg-[#4CAF50]/20 hover:border-[#4CAF50]/40 transition-colors duration-200">
+      Cerrar sesión
+    </button>
+  </div>
+
+</aside>
