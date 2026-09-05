@@ -24,7 +24,7 @@ export class IncomeComponent implements OnInit {
 
   form: FormGroup = this.fb.group({
     type: ['fijo', Validators.required],
-    amount: [null, [Validators.required, Validators.min(0.01)]],
+    amount: [null, [Validators.required, Validators.min(1.00)]],
     description: ['', Validators.required],
     income_date: ['', Validators.required],
     period: ['mes', Validators.required],
